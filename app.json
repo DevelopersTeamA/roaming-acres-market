@@ -18,7 +18,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/splash-icon.png",
         "backgroundColor": "#008080"
-      }
+      },
+      "package": "com.roamingacresmarket"
     },
     "web": {
       "bundler": "metro",
@@ -40,6 +41,14 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "5bdea221-1691-49eb-bdee-d7e3f35209ae"
+      }
     }
   }
 }
