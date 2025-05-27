@@ -1,6 +1,7 @@
 import { useRouter } from "expo-router";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 interface ProfileHeaderProps {
   route?: string;
@@ -12,6 +13,21 @@ const ProfileHeader: React.FC<ProfileHeaderProps> = ({
   account = "Buyer",
 }) => {
   const router = useRouter();
+  const [profileImage, setProfileImage] = useState<string | null>(null);
+
+  useEffect(() => {
+    const loadProfileImage = async () => {
+      try {
+        const imageUri = await AsyncStorage.getItem("profileImage");
+        if (imageUri) {
+          setProfileImage(imageUri);
+        }
+      } catch (error) {
+        console.error("Error loading profile image from AsyncStorage", error);
+      }
+    };
+    loadProfileImage();
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -19,7 +35,11 @@ const ProfileHeader: React.FC<ProfileHeaderProps> = ({
         onPress={() => router.push((route || "/(tabs)/buyer-account") as any)}
       >
         <Image
-          source={require("../assets/images/profile.png")}
+          source={
+            profileImage
+              ? { uri: profileImage }
+              : require("../assets/images/profile.png")
+          }
           style={styles.img}
         />
       </TouchableOpacity>

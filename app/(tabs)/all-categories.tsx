@@ -25,9 +25,7 @@ export default function Categories() {
             <Text className="text-[25px] text-center font-bold ml-9 mt-4">
               Our Categories
             </Text>
-            <Text className="text-[18px]  font-bold ml-7 mt-9">
-              Animals/Livestock
-            </Text>
+            <Text className="text-[18px]  font-bold ml-7 mt-9">Livestock</Text>
             <View className="flex flex-row justify-between items-center mt-4 px-4">
               <ScrollView
                 horizontal
@@ -36,7 +34,7 @@ export default function Categories() {
                   flexGrow: 1, // Allows the container to grow
                   justifyContent: "space-between", // Centers vertically
                   alignItems: "center", // Centers horizontally
-                  // paddingHorizontal: 10, // Optional: Add some padding
+                  paddingHorizontal: 10, // Optional: Add some padding
                 }}
               >
                 <ShopCategory
@@ -62,6 +60,7 @@ export default function Categories() {
               </ScrollView>
             </View>
 
+            <Text className="text-[18px]  font-bold ml-7 mt-9">Poultry</Text>
             <View className="flex flex-row justify-between items-center mt-4 px-4">
               <ScrollView
                 horizontal
@@ -70,7 +69,7 @@ export default function Categories() {
                   flexGrow: 1, // Allows the container to grow
                   justifyContent: "space-between", // Centers vertically
                   alignItems: "center", // Centers horizontally
-                  // paddingHorizontal: 10, // Optional: Add some padding
+                  paddingHorizontal: 10, // Optional: Add some padding
                 }}
               >
                 <ShopCategory
@@ -96,6 +95,9 @@ export default function Categories() {
               </ScrollView>
             </View>
 
+            <Text className="text-[18px]  font-bold ml-7 mt-9">
+              Other Animals
+            </Text>
             <View className="flex flex-row justify-between items-center mt-4 px-4">
               <ScrollView
                 horizontal
@@ -104,7 +106,7 @@ export default function Categories() {
                   flexGrow: 1, // Allows the container to grow
                   justifyContent: "space-between", // Centers vertically
                   alignItems: "center", // Centers horizontally
-                  // paddingHorizontal: 10, // Optional: Add some padding
+                  paddingHorizontal: 10, // Optional: Add some padding
                 }}
               >
                 <ShopCategory
@@ -131,7 +133,7 @@ export default function Categories() {
             </View>
 
             <Text className="text-[18px]  font-bold ml-7 mt-9">
-              Dairy/Eggs/Produce
+              Homegrown Produce
             </Text>
             <View className="flex flex-row justify-between items-center mt-4 px-4">
               <ScrollView
@@ -141,41 +143,7 @@ export default function Categories() {
                   flexGrow: 1, // Allows the container to grow
                   justifyContent: "space-between", // Centers vertically
                   alignItems: "center", // Centers horizontally
-                  // paddingHorizontal: 10, // Optional: Add some padding
-                }}
-              >
-                <ShopCategory
-                  source={require("@/assets/images/yogurt.png")}
-                  text="Yogurt"
-                  onPress={() => router.push("/inner-categories")}
-                />
-                <ShopCategory
-                  source={require("@/assets/images/egg.png")}
-                  text="Eggs"
-                  onPress={() => router.push("/inner-categories")}
-                />
-                <ShopCategory
-                  source={require("@/assets/images/butter.png")}
-                  text="Butter"
-                  onPress={() => router.push("/inner-categories")}
-                />
-                <ShopCategory
-                  source={require("@/assets/images/goat.png")}
-                  text="Cheese"
-                  onPress={() => router.push("/inner-categories")}
-                />
-              </ScrollView>
-            </View>
-
-            <View className="flex flex-row justify-between items-center mt-4 px-4">
-              <ScrollView
-                horizontal
-                showsHorizontalScrollIndicator={false}
-                contentContainerStyle={{
-                  flexGrow: 1, // Allows the container to grow
-                  justifyContent: "space-between", // Centers vertically
-                  alignItems: "center", // Centers horizontally
-                  // paddingHorizontal: 10, // Optional: Add some padding
+                  paddingHorizontal: 10, // Optional: Add some padding
                 }}
               >
                 <ShopCategory
@@ -202,9 +170,8 @@ export default function Categories() {
             </View>
 
             <Text className="text-[18px]  font-bold ml-7 mt-9">
-              Handmade/Homemade Products
+              Eggs and Dairy
             </Text>
-
             <View className="flex flex-row justify-between items-center mt-4 px-4">
               <ScrollView
                 horizontal
@@ -213,7 +180,44 @@ export default function Categories() {
                   flexGrow: 1, // Allows the container to grow
                   justifyContent: "space-between", // Centers vertically
                   alignItems: "center", // Centers horizontally
-                  // paddingHorizontal: 10, // Optional: Add some padding
+                  paddingHorizontal: 10, // Optional: Add some padding
+                }}
+              >
+                <ShopCategory
+                  source={require("@/assets/images/yogurt.png")}
+                  text="Yogurt"
+                  onPress={() => router.push("/inner-categories")}
+                />
+                <ShopCategory
+                  source={require("@/assets/images/egg.png")}
+                  text="Eggs"
+                  onPress={() => router.push("/inner-categories")}
+                />
+                <ShopCategory
+                  source={require("@/assets/images/butter.png")}
+                  text="Butter"
+                  onPress={() => router.push("/inner-categories")}
+                />
+                <ShopCategory
+                  source={require("@/assets/images/goat.png")}
+                  text="Cheese"
+                  onPress={() => router.push("/inner-categories")}
+                />
+              </ScrollView>
+            </View>
+
+            <Text className="text-[18px]  font-bold ml-7 mt-9">
+              Homemade Canned or Baked Goods
+            </Text>
+            <View className="flex flex-row justify-between items-center mt-4 px-4">
+              <ScrollView
+                horizontal
+                showsHorizontalScrollIndicator={false}
+                contentContainerStyle={{
+                  flexGrow: 1, // Allows the container to grow
+                  justifyContent: "space-between", // Centers vertically
+                  alignItems: "center", // Centers horizontally
+                  paddingHorizontal: 10, // Optional: Add some padding
                 }}
               >
                 <ShopCategory
@@ -239,6 +243,9 @@ export default function Categories() {
               </ScrollView>
             </View>
 
+            <Text className="text-[18px]  font-bold ml-7 mt-9">
+              Handmade Products
+            </Text>
             <View className="flex flex-row justify-between items-center mt-4 px-4">
               <ScrollView
                 horizontal
@@ -247,7 +254,7 @@ export default function Categories() {
                   flexGrow: 1, // Allows the container to grow
                   justifyContent: "space-between", // Centers vertically
                   alignItems: "center", // Centers horizontally
-                  // paddingHorizontal: 10, // Optional: Add some padding
+                  paddingHorizontal: 10, // Optional: Add some padding
                 }}
               >
                 <ShopCategory
@@ -273,7 +280,9 @@ export default function Categories() {
               </ScrollView>
             </View>
 
-            <Text className="text-[18px]  font-bold ml-7 mt-9">Equipment</Text>
+            <Text className="text-[18px]  font-bold ml-7 mt-9">
+              Agricultural Equipment and Supplies
+            </Text>
             <View className="flex flex-row justify-between items-center mt-4 px-4">
               <ScrollView
                 horizontal

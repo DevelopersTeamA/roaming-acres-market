@@ -114,14 +114,10 @@ const Wrapper: React.FC<{
               <View className="flex-row flex-wrap gap-2">
                 {[
                   "All",
-                  "Livestock",
-                  "Poultry",
-                  "Other Animals",
-                  "Homegrown Produce",
-                  "Eggs and Dairy",
-                  "Homemade Canned or Baked Goods",
-                  "Handmade Products",
-                  "Agricultural Equipment and Supplies",
+                  "Animals/Livestock",
+                  "Dairy/Eggs/Produce",
+                  "Handmade/Homemade Products",
+                  "Equipment",
                 ].map((item) => (
                   <TouchableOpacity
                     key={`category-${item}`}

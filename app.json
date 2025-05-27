@@ -8,8 +8,8 @@
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
-    "splash": {  
-      "backgroundColor": "#008080"  
+    "splash": {
+      "backgroundColor": "#008080"
     },
     "ios": {
       "supportsTablet": true
@@ -35,7 +35,8 @@
           "resizeMode": "contain",
           "backgroundColor": "#008080"
         }
-      ]
+      ],
+      "expo-font"
     ],
     "experiments": {
       "typedRoutes": true

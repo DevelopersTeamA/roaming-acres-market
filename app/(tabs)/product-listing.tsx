@@ -18,7 +18,13 @@ export default function WishList() {
   const router = useRouter();
   const [activeCategory, setActiveCategory] = useState("ALL");
 
-  const categories = ["ALL", "Birds", "Eggs", "Chicks", "Ducks"];
+  const categories = [
+    "ALL",
+    "Animals/Livestock",
+    "Dairy/Eggs/Produce",
+    "Handmade/Homemade Products",
+    "Equipment",
+  ];
   return (
     <ScrollView
       className="bg-white "

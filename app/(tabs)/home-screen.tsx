@@ -166,7 +166,7 @@ const RoamingAcresMarket = () => {
       >
         <Wrapper showFilterButton={true} showMenuButton={true}>
           <ProfileHeader />
-          <View className="p-3">
+          <View className="p-3 ">
             <View className="flex-row justify-between items-center">
               <View>
                 <Text className="text-2xl font-bold">Welcome</Text>
@@ -222,23 +222,23 @@ const RoamingAcresMarket = () => {
             <View className="flex flex-row justify-between items-center">
               <ShopCategory
                 source={require("@/assets/images/cow.png")}
-                text="Cattle"
-                onPress={() => router.push("/categories")}
+                text="Animals"
+                onPress={() => router.push("/category-animals")}
               />
               <ShopCategory
-                source={require("@/assets/images/pig.png")}
-                text="Pigs"
-                onPress={() => router.push("/categories")}
+                source={require("@/assets/images/yogurt.png")}
+                text="Dairy"
+                onPress={() => router.push("/category-dairy")}
               />
               <ShopCategory
-                source={require("@/assets/images/sheep.png")}
-                text="Sheep"
-                onPress={() => router.push("/categories")}
+                source={require("@/assets/images/jewelry.png")}
+                text="Products"
+                onPress={() => router.push("/category-products")}
               />
               <ShopCategory
-                source={require("@/assets/images/goat.png")}
-                text="Goats"
-                onPress={() => router.push("/categories")}
+                source={require("@/assets/images/tractors.png")}
+                text="Equipment"
+                onPress={() => router.push("/category-equipment")}
               />
             </View>
           </View>
@@ -307,6 +307,18 @@ const RoamingAcresMarket = () => {
               <TopSellingProductComponent />
               <TopSellingProductComponent />
               <TopSellingProductComponent />
+            </View>
+          </View>
+
+          {/* --- New Arrivals --- */}
+          <View className="mt-8 px-3">
+            <View className="flex-row justify-between items-center pb-3">
+              <Text className="text-xl font-bold">Buy Again</Text>
+            </View>
+            <View className="flex-row item-center justify-between space-x-6 ">
+              <NewArrival price={50} btnText="REORDER" />
+              <NewArrival price={50} btnText="REORDER" />
+              <NewArrival price={50} btnText="REORDER" />
             </View>
           </View>
         </Wrapper>

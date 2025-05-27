@@ -10,36 +10,38 @@ import { useRouter } from "expo-router";
 
 interface NewArrivalProps {
   price: number;
+  btnText?: string; // <-- added btnText prop
   onPress?: () => void;
 }
 
-export default function NewArrival({ price, onPress }: NewArrivalProps) {
+export default function NewArrival({
+  price,
+  btnText = "ADD TO CART",
+  onPress,
+}: NewArrivalProps) {
   const router = useRouter();
   const defaultOnPress = () => {
     router.push("/(tabs)/inventory-product-details");
   };
   const handlePress = onPress || defaultOnPress;
+
   return (
-    <>
-      <View style={styles.container}>
-        <Image
-          source={require("../assets/images/new-arrival.png")}
-          style={{ height: 90, width: "100%" }}
-          resizeMode="contain"
-        />
-        <Text style={styles.price}>
-          Lorem Ipsum is simply dummy text printing and typesetting.
-        </Text>
-        <View className=" flex flex-row w-full justify-between items-center mt-4">
-          <Text className="text-[13px] font-bold ">${price.toFixed(2)}</Text>
-          <TouchableOpacity onPress={handlePress}>
-            <Text style={{ color: "#008080", fontSize: 8, fontWeight: "600" }}>
-              ADD TO CART
-            </Text>
-          </TouchableOpacity>
-        </View>
+    <View style={styles.container}>
+      <Image
+        source={require("../assets/images/new-arrival.png")}
+        style={{ height: 90, width: "100%" }}
+        resizeMode="contain"
+      />
+      <Text style={styles.price}>
+        Lorem Ipsum is simply dummy text printing and typesetting.
+      </Text>
+      <View className="flex flex-row w-full justify-between items-center mt-4">
+        <Text className="text-[13px] font-bold">${price.toFixed(2)}</Text>
+        <TouchableOpacity onPress={handlePress}>
+          <Text style={styles.btnText}>{btnText}</Text>
+        </TouchableOpacity>
       </View>
-    </>
+    </View>
   );
 }
 
@@ -60,12 +62,9 @@ const styles = StyleSheet.create({
     color: "#8391A1",
     width: "100%",
   },
-  btn: {
+  btnText: {
     color: "#008080",
-    padding: 10,
-    borderRadius: 5,
-    textAlign: "center",
-    marginTop: 10,
+    fontSize: 8,
     fontWeight: "600",
   },
 });

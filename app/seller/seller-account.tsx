@@ -21,10 +21,7 @@ export default function SellerAccount() {
         contentContainerStyle={{ paddingBottom: 20 }}
       >
         <Wrapper showBackButton={true}>
-          <ProfileHeader
-            account="Seller"
-            route="/(tabs)/seller/seller-account"
-          />
+          <ProfileHeader account="Seller" route="/seller/seller-account" />
 
           <View style={{ paddingTop: 120 }}>
             <TouchableOpacity

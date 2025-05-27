@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   View,
   Text,
@@ -20,14 +20,33 @@ import NotificationComponent from "@/components/notification-component";
 import ProfilePost from "./../../components/profile-post";
 import ProfileProduct from "@/components/profile-product";
 import { useRouter } from "expo-router";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
-export default function EditProfile() {
+const defaultProfileImage: ImageSourcePropType = require("../../assets/images/profile.png");
+const defaultBackgroundImage: ImageSourcePropType = require("../../assets/images/profilebg.png");
+
+export default function SellerProfile() {
   const [activeTab, setActiveTab] = useState("Posts");
   const router = useRouter();
-
-  const profileImage: ImageSourcePropType = require("../../assets/images/profile.png");
-  const backgroundImage: ImageSourcePropType = require("../../assets/images/profilebg.png");
   const postImage: ImageSourcePropType = require("../../assets/images/post-chicken.png");
+
+  const [profileImageUri, setProfileImageUri] = useState<string | null>(null);
+  const [bannerImageUri, setBannerImageUri] = useState<string | null>(null);
+  const [selectedFont, setSelectedFont] = useState<string>("System");
+
+  useEffect(() => {
+    const loadAssets = async () => {
+      const storedProfile = await AsyncStorage.getItem("profileImage");
+      const storedBanner = await AsyncStorage.getItem("bannerImage");
+      const storedFont = await AsyncStorage.getItem("preferredFont");
+
+      if (storedProfile) setProfileImageUri(storedProfile);
+      if (storedBanner) setBannerImageUri(storedBanner);
+      if (storedFont) setSelectedFont(storedFont);
+    };
+
+    loadAssets();
+  }, []);
 
   const product = [
     {
@@ -99,7 +118,9 @@ export default function EditProfile() {
     >
       <View className="flex-1 bg-[#FDFDFD] items-center">
         <ImageBackground
-          source={backgroundImage}
+          source={
+            bannerImageUri ? { uri: bannerImageUri } : defaultBackgroundImage
+          }
           resizeMode="cover"
           className="w-full h-[250px] justify-center items-center bg-white"
         >
@@ -111,24 +132,48 @@ export default function EditProfile() {
               <Ionicons name="chevron-back-outline" size={16} color="black" />
             </View>
           </TouchableOpacity>
-          <View className="items-center">
+          <View className="items-center" style={{ marginTop: 150 }}>
             <Image
-              source={profileImage}
+              source={
+                profileImageUri ? { uri: profileImageUri } : defaultProfileImage
+              }
               className="w-40 h-40 rounded-full border-[7px] border-white mt-20"
             />
-            <Text className="text-lg font-bold mt-2">Try Temp</Text>
-            <Text className="text-sm text-gray-500">
+            <Text
+              className="text-lg mt-2"
+              style={{ fontFamily: selectedFont, color: "#000" }}
+            >
+              Try Temp
+            </Text>
+            <Text
+              className="text-sm text-gray-500"
+              style={{ fontFamily: selectedFont }}
+            >
               Joined Roaming Acres Market in 2000
             </Text>
-            <Text className="text-sm text-gray-500">00+ Active Listings</Text>
+            <Text
+              className="text-sm text-gray-500"
+              style={{ fontFamily: selectedFont }}
+            >
+              00+ Active Listings
+            </Text>
           </View>
         </ImageBackground>
-        <View className="px-4 flex flex-row justify-center items-center mt-10">
+
+        <View
+          className="px-4 flex flex-row justify-center items-center"
+          style={{ marginTop: 100 }}
+        >
           <Pressable
             onPress={() => router.push("/seller/select-uploading")}
             className="bg-[#008080] px-6 py-3 rounded-md flex-1 flex-row justify-center items-center mr-2"
           >
-            <Text className="text-white text-center font-semibold">Add</Text>
+            <Text
+              className="text-white text-center font-semibold"
+              style={{ fontFamily: selectedFont }}
+            >
+              Add
+            </Text>
             <Ionicons
               name="add-outline"
               size={18}
@@ -136,49 +181,79 @@ export default function EditProfile() {
               className="pl-2"
             />
           </Pressable>
+
           <Pressable
-            onPress={() => router.push("/(tabs)/profile")}
+            onPress={() => router.push("/seller/profile")}
             className="bg-[#008080] px-6 py-3 rounded-md flex-1 flex-row justify-center items-center mr-2"
           >
-            <Text className="text-white text-center font-semibold">
+            <Text
+              className="text-white text-center font-semibold"
+              style={{ fontFamily: selectedFont }}
+            >
               Edit Profile
             </Text>
           </Pressable>
         </View>
 
-        <View className="px-4 py-6 w-full bg-white  mx-4 my-2">
-          <Text className="text-xl font-semibold mb-4">About Me</Text>
+        <View className="px-4 py-6 w-full bg-white mx-4 my-2">
+          <Text
+            className="text-xl font-semibold mb-4"
+            style={{ fontFamily: selectedFont }}
+          >
+            About Me
+          </Text>
 
           <View className="flex-row items-center mb-3">
             <Entypo name="location-pin" size={18} color="#4B5563" />
-            <Text className="ml-2 text-gray-700 flex-shrink font-bold">
+            <Text
+              className="ml-2 text-gray-700 "
+              style={{ fontFamily: selectedFont }}
+            >
               Location
             </Text>
-            <Text className="ml-2 text-[#9796A1] flex-shrink">
+            <Text
+              className="ml-2 text-[#9796A1]"
+              style={{ fontFamily: selectedFont }}
+            >
               Seller Profile About Details...
             </Text>
           </View>
 
           <View className="flex-row items-center mb-3">
             <MaterialIcons name="store" size={18} color="#4B5563" />
-            <Text className="ml-2 text-gray-700 flex-shrink font-bold">
-              Shop Name{" "}
+            <Text
+              className="ml-2 text-gray-700 "
+              style={{ fontFamily: selectedFont }}
+            >
+              Shop Name
             </Text>
-            <Text className="ml-2 text-[#9796A1] flex-shrink">
-              Joined this market place{" "}
+            <Text
+              className="ml-2 text-[#9796A1]"
+              style={{ fontFamily: selectedFont }}
+            >
+              Joined this market place
             </Text>
           </View>
 
           <View className="flex-row items-center mb-3">
-            <Text className="ml-4 text-gray-700"></Text>
-            <Text className="ml-2 text-gray-700 font-bold">Rating:</Text>
+            <Text
+              className="ml-4 text-gray-700 font-bold"
+              style={{ fontFamily: selectedFont }}
+            >
+              Rating:
+            </Text>
             <FontAwesome
               name="star"
               size={18}
               color="#FBBF24"
               className="ml-2"
             />
-            <Text className="ml-2 text-gray-700">4.7</Text>
+            <Text
+              className="ml-2 text-gray-700"
+              style={{ fontFamily: selectedFont }}
+            >
+              4.7
+            </Text>
           </View>
         </View>
 
@@ -196,6 +271,7 @@ export default function EditProfile() {
                       ? "text-teal-600 border-b-2 border-teal-600 pb-1"
                       : "text-black"
                   }`}
+                  style={{ fontFamily: selectedFont }}
                 >
                   {status}
                 </Text>
@@ -206,21 +282,23 @@ export default function EditProfile() {
           <View className="p-2">
             {activeTab === "Products" && (
               <View>
-                <Text className="text-lg font-bold mb-2">Product Section</Text>
-                <View className="flex flex-row flex-wrap justify-between ">
+                <Text
+                  className="text-lg mb-2"
+                  style={{ fontFamily: selectedFont }}
+                >
+                  Product Section
+                </Text>
+                <View className="flex flex-row flex-wrap justify-between">
                   {product.map((item) => (
-                    <View className="flex flex-row flex-wrap justify-between ">
-                      {product.map((item) => (
-                        <View key={item.id} className="w-[30%] m-[1.5%]">
-                          <ProfileProduct
-                            name={item.name}
-                            price={item.price}
-                            caption="Lorem ipsum is simply dummy text printing and typesetting."
-                            postImage={require("../../assets/images/post-chicken.png")}
-                            btntext="EDIT"
-                          />
-                        </View>
-                      ))}
+                    <View key={item.id} className="w-[30%] m-[1.5%]">
+                      <ProfileProduct
+                        name={item.name}
+                        price={item.price}
+                        caption="Lorem ipsum is simply dummy text printing and typesetting."
+                        postImage={require("../../assets/images/post-chicken.png")}
+                        btntext="EDIT"
+                        fontFamily={selectedFont}
+                      />
                     </View>
                   ))}
                 </View>
@@ -229,11 +307,20 @@ export default function EditProfile() {
 
             {activeTab === "Posts" && (
               <View>
-                <Text className="text-lg font-bold mb-2">Post Section</Text>
+                <Text
+                  className="text-lg  mb-2"
+                  style={{ fontFamily: selectedFont }}
+                >
+                  Post Section
+                </Text>
                 {post.map((item) => (
                   <ProfilePost
                     key={item.id}
-                    profileImage={profileImage}
+                    profileImage={
+                      profileImageUri
+                        ? { uri: profileImageUri }
+                        : defaultProfileImage
+                    }
                     name={item.name}
                     time={item.subText}
                     caption="Lorem Ipsum is simply dummy text printing and typesetting. Lorem Ipsum is simply dummy text printing  Lorem Ipsum is simply dummy text printing "
