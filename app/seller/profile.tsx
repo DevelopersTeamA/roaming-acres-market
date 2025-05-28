@@ -357,7 +357,7 @@ export default function EditProfile() {
         </View>
 
         <TouchableOpacity
-          onPress={() => router.back()}
+          onPress={() => router.push("/seller/home-screen")}
           style={styles.saveButton}
         >
           <Text style={[styles.saveButtonText, { fontFamily }]}>Save</Text>
