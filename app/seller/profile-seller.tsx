@@ -33,16 +33,19 @@ export default function SellerProfile() {
   const [profileImageUri, setProfileImageUri] = useState<string | null>(null);
   const [bannerImageUri, setBannerImageUri] = useState<string | null>(null);
   const [selectedFont, setSelectedFont] = useState<string>("System");
+  const [storeName, setStoreName] = useState<string>("Try Temp");
 
   useEffect(() => {
     const loadAssets = async () => {
       const storedProfile = await AsyncStorage.getItem("profileImage");
       const storedBanner = await AsyncStorage.getItem("bannerImage");
       const storedFont = await AsyncStorage.getItem("preferredFont");
+      const storedName = await AsyncStorage.getItem("name");
 
       if (storedProfile) setProfileImageUri(storedProfile);
       if (storedBanner) setBannerImageUri(storedBanner);
       if (storedFont) setSelectedFont(storedFont);
+      if (storedName) setStoreName(storedName);
     };
 
     loadAssets();
@@ -143,7 +146,7 @@ export default function SellerProfile() {
               className="text-lg mt-2"
               style={{ fontFamily: selectedFont, color: "#000" }}
             >
-              Try Temp
+              {storeName}
             </Text>
             <Text
               className="text-sm text-gray-500"
