@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, Image, ImageSourcePropType } from "react-native";
-import { Star } from "lucide-react-native";
+import { Ionicons } from "@expo/vector-icons"; // ✅ Imported Ionicons
 
 interface ReviewComponentProps {
   name?: string;
@@ -12,7 +12,7 @@ interface ReviewComponentProps {
 
 const ReviewComponent: React.FC<ReviewComponentProps> = ({
   name = "Anonymous",
-  avatar = require("../assets/images/Top-selling-4.png"), // Make sure this exists
+  avatar = require("../assets/images/Top-selling-4.png"),
   rating = 0,
   daysAgo = 0,
   review = "No review provided.",
@@ -21,12 +21,12 @@ const ReviewComponent: React.FC<ReviewComponentProps> = ({
     const stars = [];
     for (let i = 1; i <= 5; i++) {
       stars.push(
-        <Star
+        <Ionicons
           key={i}
+          name={i <= rating ? "star" : "star-outline"} // ✅ filled or outlined star
           size={16}
           color={i <= rating ? "#FBBF24" : "#E5E7EB"}
-          fill={i <= rating ? "#FBBF24" : "#E5E7EB"}
-          className="mr-1"
+          style={{ marginRight: 4 }}
         />
       );
     }
@@ -34,7 +34,7 @@ const ReviewComponent: React.FC<ReviewComponentProps> = ({
   };
 
   return (
-    <View className="  mb-4">
+    <View className="mb-4">
       {/* Top row */}
       <View className="flex-row items-center justify-between mb-2">
         <View className="flex-row items-center gap-3">
@@ -53,7 +53,7 @@ const ReviewComponent: React.FC<ReviewComponentProps> = ({
             </View>
           </View>
         </View>
-        <Text className="text-[##008080] text-sm font-medium">
+        <Text className="text-[#008080] text-sm font-medium">
           {daysAgo} Day{daysAgo === 1 ? "" : "s"} ago
         </Text>
       </View>

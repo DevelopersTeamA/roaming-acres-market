@@ -6,6 +6,7 @@ import {
   Image,
   ImageSourcePropType,
 } from "react-native";
+import { Ionicons } from "@expo/vector-icons"; // ✅ Ionicons import
 
 interface ProductCardProps {
   onPress?: () => void;
@@ -17,8 +18,6 @@ interface ProductCardProps {
   savings: number;
   rating: number;
 }
-
-import { Star } from "lucide-react-native"; // Make sure this exists or adjust as needed
 
 const ProductCard: React.FC<ProductCardProps> = ({
   onPress,
@@ -58,7 +57,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
           <Text className="text-sm text-green-700 mt-1">Save : ${savings}</Text>
 
           <View className="flex-row items-center mt-2">
-            <Star size={16} color="#F97316" fill="#F97316" />
+            <Ionicons name="star" size={16} color="#F97316" /> {/* ✅ Updated */}
             <Text className="ml-1 text-sm font-medium">{rating}</Text>
           </View>
         </View>
