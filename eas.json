@@ -11,13 +11,21 @@
     "preview": {
       "distribution": "internal"
     },
-    "production": {
-      "autoIncrement": true
+     "production": {
+      "env": {
+        "EXPO_NO_CACHE": "true"
+      },
+      "node": "18",
+      "npm": "8",
+      "installCommand": "npm install"
     },
-     "apk": {
-      "android": {
-        "buildType": "apk"
-      }
+    "apk": {
+      "env": {
+        "EXPO_NO_CACHE": "true"
+      },
+      "node": "18",
+      "npm": "8",
+      "installCommand": "npm install"
     }
   },
   "submit": {
