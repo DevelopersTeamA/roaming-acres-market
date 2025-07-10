@@ -1,6 +1,6 @@
 {
   "cli": {
-    "version": ">= 16.6.2",
+    "version": ">= 6.3.0",
     "appVersionSource": "remote"
   },
   "build": {
@@ -11,21 +11,16 @@
     "preview": {
       "distribution": "internal"
     },
-     "production": {
+    "production": {
       "env": {
         "EXPO_NO_CACHE": "true"
-      },
-      "node": "18",
-      "npm": "8",
-      "installCommand": "npm install"
+      }
     },
     "apk": {
       "env": {
         "EXPO_NO_CACHE": "true"
       },
-      "node": "18",
-      "npm": "8",
-      "installCommand": "npm install"
+      "distribution": "store"
     }
   },
   "submit": {
