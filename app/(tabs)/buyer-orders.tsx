@@ -215,7 +215,7 @@ export default function BuyerOrders() {
           {ordersData[activeTab].map((order) => (
             <OrderComponent
               key={order.id}
-              source={require("../../assets/images/chicken.jpg")}
+              source={require("../../assets/images/chicken1.jpg")}
               name={order.name}
               subText={order.subText}
               price={order.price}

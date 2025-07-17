@@ -17,10 +17,12 @@
       }
     },
     "apk": {
+      "android": {
+        "buildType": "apk"
+      },
       "env": {
         "EXPO_NO_CACHE": "true"
-      },
-      "distribution": "store"
+      }
     }
   },
   "submit": {

@@ -16,7 +16,7 @@ export default function ShopByCategory({ text, price, iconState = 'primary', sou
       {/* Image with icon container */}
       <View style={styles.imageContainer}>
         <Image
-          source={source || require("../assets/images/chicken.jpg")}
+          source={source || require("../assets/images/chicken1.jpg")}
           style={styles.image}
           resizeMode="cover"
         />

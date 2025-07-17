@@ -61,7 +61,7 @@ export default function WishList() {
           />
           <SuggestedCategoriesComponent
             name="Poultry Name"
-            source={require("../../assets/images/chicken.jpg")}
+            source={require("../../assets/images/chicken1.jpg")}
             buttonText="View Product"
             rating={4.3}
           />

@@ -1,40 +1,35 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { useRouter } from "expo-router";
+import { useRouter, usePathname } from "expo-router"; // ✅ ADDED usePathname
 
 type TabIcon = "home" | "heart" | "grid" | "cart" | "chatbubbles" | string;
 
 interface SellerTabBarProps {
-  // IDs
   id1?: string;
   id2?: string;
   id3?: string;
   id4?: string;
   id5?: string;
 
-  // Icons
   icon1?: TabIcon;
   icon2?: TabIcon;
   icon3?: TabIcon;
   icon4?: TabIcon;
   icon5?: TabIcon;
 
-  // Labels
   label1?: string;
   label2?: string;
   label3?: string;
   label4?: string;
   label5?: string;
 
-  // Routes
   route1?: string;
   route2?: string;
   route3?: string;
   route4?: string;
   route5?: string;
 
-  // Optional Params
   params1?: object;
   params2?: object;
   params3?: object;
@@ -69,8 +64,8 @@ const SellerTabBar = ({
   params4,
   params5,
 }: SellerTabBarProps) => {
-  const [activeTab, setActiveTab] = React.useState(id1);
   const router = useRouter();
+  const pathname = usePathname(); // ✅ NEW
 
   const tabs = [
     { id: id1, icon: icon1, label: label1, route: route1, params: params1 },
@@ -80,44 +75,45 @@ const SellerTabBar = ({
     { id: id5, icon: icon5, label: label5, route: route5, params: params5 },
   ];
 
-  const handleTabPress = (tabId: string, route: string, params?: object) => {
-    setActiveTab(tabId);
-    if (params) {
-      router.push({ pathname: route, params });
-    } else {
-      router.push(route as any);
+  const handleTabPress = (route: string, params?: object) => {
+    if (pathname !== route) {
+      if (params) {
+        router.push({ pathname: route, params });
+      } else {
+        router.push(route);
+      }
     }
   };
 
   return (
     <View style={styles.container}>
-      {tabs.map((tab) => (
-        <TouchableOpacity
-          key={tab.id}
-          style={[
-            styles.tab,
-            activeTab === tab.id && {
-              borderBottomWidth: 2,
-              borderBottomColor: "#008080",
-            },
-          ]}
-          onPress={() => handleTabPress(tab.id, tab.route, tab.params)}
-        >
-          <Ionicons
-            name={tab.icon as any}
-            size={24}
-            color={activeTab === tab.id ? "#008080" : "#8391A1"}
-          />
-          <Text
+      {tabs.map((tab) => {
+        const isActive = pathname === tab.route;
+        return (
+          <TouchableOpacity
+            key={tab.id}
             style={[
-              styles.tabText,
-              activeTab === tab.id && styles.activeTabText,
+              styles.tab,
+              isActive && {
+                borderBottomWidth: 2,
+                borderBottomColor: "#008080",
+              },
             ]}
+            onPress={() => handleTabPress(tab.route, tab.params)}
           >
-            {tab.label}
-          </Text>
-        </TouchableOpacity>
-      ))}
+            <Ionicons
+              name={tab.icon as any}
+              size={24}
+              color={isActive ? "#008080" : "#8391A1"}
+            />
+            <Text
+              style={[styles.tabText, isActive && styles.activeTabText]}
+            >
+              {tab.label}
+            </Text>
+          </TouchableOpacity>
+        );
+      })}
     </View>
   );
 };

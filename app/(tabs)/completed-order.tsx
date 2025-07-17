@@ -34,14 +34,14 @@ export default function BuyerOrders() {
         name: "Active Order 1", 
         subText: "In Progress", 
         price: 150,
-        image: require("../../assets/images/chicken.jpg")
+        image: require("../../assets/images/chicken1.jpg")
       },
       { 
         id: 2, 
         name: "Active Order 2", 
         subText: "Shipping Soon", 
         price: 200,
-        image: require("../../assets/images/chicken.jpg")
+        image: require("../../assets/images/chicken1.jpg")
       },
     ],
     Completed: [
@@ -50,14 +50,14 @@ export default function BuyerOrders() {
         name: "Completed Order 1", 
         subText: "Delivered", 
         price: 180,
-        image: require("../../assets/images/chicken.jpg")
+        image: require("../../assets/images/chicken1.jpg")
       },
       { 
         id: 4, 
         name: "Completed Order 2", 
         subText: "Delivered", 
         price: 220,
-        image: require("../../assets/images/chicken.jpg")
+        image: require("../../assets/images/chicken1.jpg")
       },
     ],
     Cancelled: [
@@ -66,7 +66,7 @@ export default function BuyerOrders() {
         name: "Cancelled Order 1", 
         subText: "Refunded", 
         price: 100,
-        image: require("../../assets/images/chicken.jpg")
+        image: require("../../assets/images/chicken1.jpg")
       },
     ],
   };

@@ -62,7 +62,7 @@ export default function BuyerOrders() {
 
         <View className="p-4">
          <OrderComponent 
-            source={require('../../assets/images/chicken.jpg')}
+            source={require('../../assets/images/chicken1.jpg')}
             name='Poultry Name'
             subText='Corp Prodution'
             price={200}
@@ -70,7 +70,7 @@ export default function BuyerOrders() {
             onPress={() => router.push('/home-screen')}
             />
          <OrderComponent 
-            source={require('../../assets/images/chicken.jpg')}
+            source={require('../../assets/images/chicken1.jpg')}
             name='Poultry Name'
             subText='Corp Prodution'
             price={200}
@@ -78,7 +78,7 @@ export default function BuyerOrders() {
             onPress={() => router.push('/home-screen')}
             />
          <OrderComponent 
-            source={require('../../assets/images/chicken.jpg')}
+            source={require('../../assets/images/chicken1.jpg')}
             name='Poultry Name'
             subText='Corp Prodution'
             price={200}
@@ -86,7 +86,7 @@ export default function BuyerOrders() {
             onPress={() => router.push('/home-screen')}
             />
          <OrderComponent 
-            source={require('../../assets/images/chicken.jpg')}
+            source={require('../../assets/images/chicken1.jpg')}
             name='Poultry Name'
             subText='Corp Prodution'
             price={200}
@@ -94,7 +94,7 @@ export default function BuyerOrders() {
             onPress={() => router.push('/home-screen')}
             />
          <OrderComponent 
-            source={require('../../assets/images/chicken.jpg')}
+            source={require('../../assets/images/chicken1.jpg')}
             name='Poultry Name'
             subText='Corp Prodution'
             price={200}
