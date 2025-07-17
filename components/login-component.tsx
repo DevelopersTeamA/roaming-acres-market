@@ -100,7 +100,7 @@ const LoginComponent: React.FC<LoginComponentProps> = ({
   };
 
   return (
-    <Wrapper>
+    <Wrapper showBackButton>
       <KeyboardAvoidingView
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         style={{ flex: 1 }}

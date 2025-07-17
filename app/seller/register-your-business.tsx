@@ -72,10 +72,13 @@ const BusinessRegistrationScreen: React.FC = () => {
           paddingBottom: Platform.OS === "ios" ? 100 : 80,
         }}
       >
-        <Wrapper>
+        <Wrapper showBackButton>
           <View className="px-3">
-            <Text className="text-[28px] font-bold ">
+            <Text className="text-[28px] font-bold pt-10 text-center">
               Register Your Business
+            </Text>
+            <Text className="text-[14px] pb-10 pt-5 text-center">
+              Please provide all required details to register your business with us
             </Text>
 
             <View>
@@ -88,6 +91,7 @@ const BusinessRegistrationScreen: React.FC = () => {
                     value={formData.firstName}
                     onChangeText={(text: string) => handleChange("firstName", text)}
                     placeholder="First Name"
+
                   />
                 </View>
                 <View className="flex-1">
@@ -109,7 +113,7 @@ const BusinessRegistrationScreen: React.FC = () => {
             />
 
             <CustomTextInput
-              label="Business Name"
+              label="Business Name*"
               value={formData.businessName}
               onChangeText={(text: string) => handleChange("businessName", text)}
             />
@@ -134,7 +138,7 @@ const BusinessRegistrationScreen: React.FC = () => {
             </View>
 
             <CustomTextInput
-              label="E-mail"
+              label="E-mail*"
               value={formData.email}
               onChangeText={(text: string) => handleChange("email", text)}
               keyboardType="email-address"
@@ -142,10 +146,9 @@ const BusinessRegistrationScreen: React.FC = () => {
             />
 
             <CustomTextInput
-              label="Address"
+              label="Address*"
               value={formData.address}
               onChangeText={(text: string) => handleChange("address", text)}
-              placeholder="Address"
             />
 
             <View className="flex-row justify-between gap-6">
@@ -167,14 +170,14 @@ const BusinessRegistrationScreen: React.FC = () => {
             </View>
 
             <Dropdown
-              label="Type of Business"
+              label="Type of Business*"
               options={businessTypes}
               selectedValue={formData.type}
               onValueChange={(value: string) => handleChange("type", value)}
             />
 
             <CustomTextInput
-              label="Business Nature"
+              label="Business Nature*"
               value={formData.nature}
               onChangeText={(text: string) => handleChange("nature", text)}
             />

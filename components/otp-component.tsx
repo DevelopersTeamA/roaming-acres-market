@@ -54,7 +54,7 @@ const OtpComponent: React.FC<OtpComponentProps> = ({
   };
 
   return (
-    <Wrapper>
+    <Wrapper showBackButton>
       <KeyboardAvoidingView
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         style={{ flex: 1 }}

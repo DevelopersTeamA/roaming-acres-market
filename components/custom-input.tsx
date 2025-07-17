@@ -46,7 +46,7 @@ const CustomTextInput = forwardRef<TextInput, CustomTextInputProps>(
       className,
       cursorColor = "#008080", // Default cursor color
       selectionColor = "#008080", // Default selection color
-      placeholderTextColor = "",
+      placeholderTextColor = "#000000",
       ...props
     },
     ref
